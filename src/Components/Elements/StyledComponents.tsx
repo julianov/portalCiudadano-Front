@@ -904,6 +904,8 @@ export const NotificationFullSizeWrapper = styled.div`
   }
 `;
 
+
+
 // Elements
 
 export const SVGPath = styled.path<{ color?: string }>`
