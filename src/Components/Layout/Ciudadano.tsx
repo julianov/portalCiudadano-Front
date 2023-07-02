@@ -18,7 +18,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import { Pages } from "../../Routes/Pages";
 import { CitizenNotification, INavigation } from "../../Interfaces/Data";
 import { LayoutBreadcrump } from "./Breadcrump";
-import { NotificationModal } from "../Notifications/NotificationModal";
+import { NotificationPopUp } from "../Notifications/NotificationModal";
 
 
 

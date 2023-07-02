@@ -21,7 +21,7 @@ import { NotificationFile } from "./File";
 import { NotificationCardReduced } from "./Card";
 import { NotificationFullSize } from "./FullSize";
 
-export const NotificationModal = () => {
+export const NotificationPopUp = () => {
     
     const { userNotifications, ReadNotification } = useContext(NotificationsContext);
     const newNotifications = userNotifications.filter((N) => N.NEW);
