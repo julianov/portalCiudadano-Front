@@ -20,8 +20,6 @@ export const Element: React.FC<Props> = ({ instance, ...props }) => {
   const [ field ] = useField(instance.name);
   const [ HelpField ] = useField(HelpToken+instance.name)
 
-
-
   const { errors, setFieldValue, values } = useFormikContext();
   const thiserror = getIn(errors, instance.name)
   
@@ -52,6 +50,8 @@ export const Element: React.FC<Props> = ({ instance, ...props }) => {
     }
   }, [HelpField.value])
 
+
+  console.log("OBJ: "+JSON.stringify(basetype))
   const renderType = <T extends ElementSchemaTypes>(instance: ElementInstance<T>) => {
     let EI : any;
 
@@ -89,7 +89,7 @@ export const Element: React.FC<Props> = ({ instance, ...props }) => {
         return (<SelectWrapper error={thiserror?true:false} disabled={props.disabled} focus={focus || !empty}><div>
           <label className="text" htmlFor={EI.name}>{EI.properties.label}</label>
           <select autoFocus={props.autoFocus} {...field} onFocus={handleFocus} onBlur={handleFocus}>
-            {EI.properties.options.map((option:any) => (
+            {EI.properties.options&& EI.properties.options.map((option:any) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -106,9 +106,17 @@ export const Element: React.FC<Props> = ({ instance, ...props }) => {
             <label>{EI.properties.label}</label>
           </div>
           </div></CheckboxWrapper>);
+
+      case "section": EI = instance as ElementInstance<"SECTION">;
+      return (<div>
+          <label>{EI.properties.label}</label>
+          <hr />
+        </div>
+        );
         
       default:
-        return 'ERROR';
+        console.log(basetype.type)
+        return "TYPE IS NOT DEFINED";
 
     }
   }
